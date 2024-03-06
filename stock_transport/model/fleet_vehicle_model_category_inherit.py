@@ -11,4 +11,3 @@ class FleetVehicleModelCategoryInherit(models.Model):
     def _compute_display_name(self):
         for record in self:
             record.display_name = f"{record.name} ({str(record.max_weight)}kg, {str(record.max_volume)}m³)"
-

@@ -5,12 +5,9 @@ from odoo import models, fields, api
 class StockPickingInherit(models.Model):
     _inherit = "stock.picking"
 
-    volume = fields.Float(compute="_compute_volume", store=True)
+    volume = fields.Float(compute="_compute_volume")
 
-    @api.depends("product_id")
+    @api.depends('move_line_ids')
     def _compute_volume(self):
-        vulume = 0
-        for product in self.product_id:
-            vulume += product.volume
-
-        self.volume = vulume
+        for record in self:
+            record.volume = sum(move_line.product_id.volume for move_line in record.move_line_ids if move_line.product_id )

@@ -11,6 +11,7 @@
     "version": "1.0",
     "depends": ["base","stock_picking_batch", "fleet" ],
     "data" : [
+        "security/ir.model.access.csv",
         "views/fleet_vehicle_category_views_inherit.xml",
         "views/stock_picking_batch_views_inherit.xml",
         "views/stock_picking_views_inherit.xml",
